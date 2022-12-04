@@ -1,0 +1,31 @@
+html {
+    margin: 0%;
+    padding: 0%;
+}
+
+body {
+    background-color: #bfd1e2;
+    margin: 0%;
+    padding: 0%;
+
+}
+
+h1{
+    text-align:center;
+}
+
+li > a {
+    color: #2d2d2d;
+    text-decoration: none;
+    font-size: 30px;
+    font-weight: bold;
+}
+li {
+    color: #2d2d2d;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+a:hover {
+    background-color: #548fc8;
+}
