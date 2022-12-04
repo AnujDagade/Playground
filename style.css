@@ -37,6 +37,11 @@ a:hover{
     background-color: #bfd1e2;
 }
 
+a:active {
+    color: grey;
+    background-color: #bfd1e2;
+}
+
 .nav-right{
     float: right;
 }

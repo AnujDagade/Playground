@@ -16,11 +16,35 @@
             background-color: #bfd1e2;
             margin: 0%;
             padding: 0%;
-         }
+        }
+
+        .title{
+            font-size:20px;
+        }
+
     </style>
 
 </head>
 <body>
-    <?php echo "HI"; ?>
+    
+        <div class="title">
+            Value pass by reference
+        </div>
+        <?php
+
+            $a = 69;
+
+            echo "Before changing\n$a<br>";
+
+            function chng(&$b)
+            {
+                $b *= 2;
+            }
+
+            chng($a);
+            echo "After changing\n$a<br>";
+        ?>
+
+
 </body>
 </html>
