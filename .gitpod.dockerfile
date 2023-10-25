@@ -1,1 +1,1 @@
-FROM gitpod/ravendb
+FROM ravendb/ravendb
