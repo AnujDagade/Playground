@@ -23,7 +23,9 @@ function validateFormData(formData) {
         err['name'] = "Invalid name"
     }
 
-    console.log(formData.birthDate)
+    if(formData.birthDate.length == 0){
+        err['birthDate'] = "Invalid birth date"
+    }
     return err
 }
 
