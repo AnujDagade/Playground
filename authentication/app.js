@@ -34,15 +34,22 @@ button.addEventListener('click', (event) => {
     if (!errs) {
         console.log("form is correct");
     } else {
+
+
+        const errEle = document.createElement('div')
+        const errCon = document.querySelector(".errCon")
+        errEle.className = "err"
+
         for (const err in errs) {
             console.log(errs[err]);
+            let ele = document.createElement('div')
+            ele.innerText = `${errs[err]}`
+            errEle.appendChild(ele)
         }
-        const errEle = document.createElement('div')
-        errEle.className = "err"
-        const errCon = document.querySelector(".errCon")
         errCon.appendChild(errEle)
         
-        setTimeout(()=> errCon.removeChild(errEle),5000)
+
+        setTimeout(() => errCon.removeChild(errEle), 5000)
     }
 
 })
