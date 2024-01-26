@@ -23,6 +23,7 @@ function validateFormData(formData) {
         err['name'] = "Invalid name"
     }
 
+    console.log(formData.birthDate)
     return err
 }
 
