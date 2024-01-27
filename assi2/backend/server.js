@@ -25,7 +25,7 @@ http.createServer((req, res) => {
 			}).catch((err) => {
 				res.write("Failed to get Merged Data")
 
-			}).then(() => {
+			}).finally(() => {
 				res.end()
 			})
 		})
