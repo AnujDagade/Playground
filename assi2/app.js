@@ -7,7 +7,8 @@ let fileNames = {}
 
 
 
-submitButton.addEventListener("click", async () => {
+submitButton.addEventListener("click", async (event) => {
+    event.preventDefault()
     for (const fileName of fileNameInputs) {
         fileNames[fileName.id] = fileName.value
     }
@@ -24,7 +25,7 @@ submitButton.addEventListener("click", async () => {
             }
         })
 
-        const data = await response.json()
+        const data = await response.text()
         console.log("Data", data)
     } catch (error) {
         console.error(error)
