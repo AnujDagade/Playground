@@ -2,6 +2,7 @@
 
 const fileNameInputs = document.querySelectorAll("input")
 const submitButton = document.querySelector("button")
+const para = document.querySelector(".para")
 
 let fileNames = {}
 
@@ -26,7 +27,9 @@ submitButton.addEventListener("click", async (event) => {
         })
 
         const data = await response.text()
+        para.innerText = data
         console.log("Data", data)
+
     } catch (error) {
         console.error(error)
     }
