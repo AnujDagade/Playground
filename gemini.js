@@ -8,7 +8,7 @@ const genAI = new GoogleGenerativeAI(process.env.GEMINI_API);
 
 /**
  * GenerativeModel {
-  apiKey: 'AIzaSyC814ADT9A7TC6KTkBZQ-U_nV0C88i_b3U',
+  apiKey: '',
   model: 'models/gemini-pro-vision',
   generationConfig: {},
   safetySettings: [],
