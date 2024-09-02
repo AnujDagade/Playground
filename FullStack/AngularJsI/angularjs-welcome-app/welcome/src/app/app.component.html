@@ -2,4 +2,24 @@
   Computer Science, NWC”.</h1>
 
 <app-alert></app-alert>
+
+<div>
+  <h1>Addition of Two Numbers</h1>
+
+  <div>
+    <label for="num1">Number 1:</label>
+    <input type="number" id="num1" [(ngModel)]="num1">
+  </div>
+
+  <div>
+    <label for="num2">Number 2:</label>
+    <input type="number" id="num2" [(ngModel)]="num2">
+  </div>
+
+  <button (click)="addNumbers()" [disabled]="num1 === null || num2 === null">Add</button>
+
+  <div *ngIf="showResult">
+    <h2>Result: {{ result }}</h2>
+  </div>
+</div>
 <router-outlet />
