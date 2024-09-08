@@ -1,0 +1,43 @@
+/* Container Styles */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #1a1a1a;
+  color: #fff;
+}
+
+/* Input Field Styles */
+.input-field {
+  margin: 10px;
+}
+
+/* Result Styles */
+.result {
+  margin-top: 20px;
+  font-size: 1.5rem;
+}
+
+/* Button Styles */
+.add-button {
+  background-color: #f39c12;
+  color: #1a1a1a;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.add-button:disabled {
+  background-color: #555;
+  cursor: not-allowed;
+}
+
+.add-button:hover:not(:disabled) {
+  background-color: #fff;
+  color: #f39c12;
+}
