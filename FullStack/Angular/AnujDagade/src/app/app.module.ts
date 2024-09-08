@@ -6,18 +6,21 @@ import { AppComponent } from './app.component';
 import { MessageComponent } from './message/message.component';
 import { AlertComponent } from './alert/alert.component';
 import { AddComponent } from './add/add.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MessageComponent,
     AlertComponent,
-    AddComponent
+    AddComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule
   ],
   providers: [],
