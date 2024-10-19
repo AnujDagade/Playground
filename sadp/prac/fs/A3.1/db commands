@@ -1,0 +1,20 @@
+> db.customers.insert({name:"Divya",addr:"pune",number:9381929384});
+WriteResult({ "nInserted" : 1 })
+> db.customers.insert({name:"Shreyas",addr:"pune",number:9381929364});
+WriteResult({ "nInserted" : 1 })
+> db.customers.insert({name:"Sonu",addr:"mumbai",number:9381929362});
+WriteResult({ "nInserted" : 1 })
+> db.customers.insert({name:"Ketan",addr:"mumbai",number:9381919362});
+WriteResult({ "nInserted" : 1 })
+> db.customers.insert({name:"Adarsh",addr:"chennai",number:9381499362});
+WriteResult({ "nInserted" : 1 })
+> db.students.insert({rollno:1,name:"Adarsh",div:'A'});
+WriteResult({ "nInserted" : 1 })
+> db.students.insert({rollno:2,name:"Divya",div:'A'});
+WriteResult({ "nInserted" : 1 })
+> db.students.insert({rollno:3,name:"Shreyas",div:'B'});
+WriteResult({ "nInserted" : 1 })
+> db.students.insert({rollno:4,name:"Sonu",div:'B'});
+WriteResult({ "nInserted" : 1 })
+> db.students.insert({rollno:5,name:"Ketan",div:'C'});
+WriteResult({ "nInserted" : 1 })

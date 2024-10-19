@@ -1,0 +1,9 @@
+const mongoose = require('mongoose');
+const url='mongodb://192.168.100.203/DS';
+mongoose.connect(url);
+
+const studentModel=mongoose.model('students',new Schema({rollno:Number,name:String,div:String}));
+
+const records=[{rollno:1,name:"Adarsh",div:'A'},{rollno:2,name:"Divya",div:'A'},{rollno:3,name:"Shreyas",div:'B'},{rollno:4,name:"Sonu",div:'B'},{rollno:5,name:"Ketan",div:'C'}];
+
+
