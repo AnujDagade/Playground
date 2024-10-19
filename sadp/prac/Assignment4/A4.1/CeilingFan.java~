@@ -1,0 +1,47 @@
+// CeilingFan.java
+class CeilingFan {
+    private String state;
+
+    public CeilingFan() {
+        this.state = "Off";
+    }
+
+    public void turnOn() {
+        System.out.println("Ceiling Fan is turned on.");
+        state = "On";
+    }
+
+    public void turnOff() {
+        System.out.println("Ceiling Fan is turned off.");
+        state = "Off";
+    }
+
+//used to undo the last action performed on the ceiling fan.
+    public void undo() {
+        if (state.equals("On")) {
+            turnOff();
+        } else {
+            turnOn();
+        }
+    }
+}
+
+public class CeilingFanTest{
+    public static void main(String[] args) {
+        CeilingFan ceilingFan = new CeilingFan();
+        
+        ceilingFan.turnOn();
+        ceilingFan.undo();
+        
+        ceilingFan.turnOff();
+        ceilingFan.undo();
+        
+        ceilingFan.undo(); // Undoing an action when no action was performed
+        
+        ceilingFan.turnOn();
+        ceilingFan.turnOff();
+        ceilingFan.turnOn();
+        ceilingFan.undo();
+    }
+}
+
