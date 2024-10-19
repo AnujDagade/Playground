@@ -1,0 +1,47 @@
+<!Doctype html>
+<head>
+<title>
+<b>Login</b>
+</title>
+
+<script type="text/javascript">
+
+function validate()
+{
+	var name=document.forms.loginForm.name.value;
+	var email=document.forms.loginForm.email.value;
+	var password=document.forms.loginForm.password.value;
+	var reg=/^[a-zA-Z]+$/;
+	var ereg=/^[a-zA-Z0-9._]+@[a-zA-Z.]+$/;
+	var newreg=/^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$/;
+
+	if(name=="" || !reg.test(name)){
+		window.alert("Enter a valid name!");
+		return false;
+	}
+	else if(email=="" || !ereg.test(email)){
+                window.alert("Enter a valid email id!");
+		return false;
+        }
+	else{
+		window.alert("Login Successful!!");
+		return true;
+	}
+	return true;
+}
+
+</script>
+
+</head>
+<center>
+<body>
+<h1>Login</h1>
+<form name="loginForm" onsubmit="return validate();" method="post">
+<input name="name" type="text" placeholder="Full Name"><br><br>
+<input name="email" type="text" placeholder="Email Id"><br><br>
+<input name="password" type="password" placeholder="Password"><br><br>
+<center><input name="login" type="submit" value="Login"></center>
+</form>
+</body>
+</center>
+</html>

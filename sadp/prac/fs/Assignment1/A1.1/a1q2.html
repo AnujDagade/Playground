@@ -1,0 +1,81 @@
+<!Doctype html>
+<head>
+<title>
+<b>Employee Registration Form</b>
+</title>
+
+<script type="text/javascript">
+
+function datevalidation(d,j)
+{
+	var [yy,mm,dd]=d.split("-");
+	var [yy1,mm1,dd1]=j.split("-");
+
+	if(yy>yy1)
+	{
+		return false;
+	}
+	return true;
+}
+
+function validate()
+{
+	var fname=document.forms.registrationForm.fname.value;
+	var lname=document.forms.registrationForm.lname.value;
+	var dob=document.forms.registrationForm.dob.value;
+	var jd=document.forms.registrationForm.jd.value;
+	var sal=document.forms.registrationForm.salary.value;
+	var reg=/^[a-zA-Z]+$/;
+	var regsal=/^[0-9]+$/;
+
+	var dval=datevalidation(dob,jd);
+
+	if(fname=="" || !reg.test(fname)){
+		window.alert("Enter a valid first name!");
+		return false;
+	}
+	else if(lname=="" || !reg.test(lname)){
+                window.alert("Enter a valid last name!");
+		return false;
+        }
+	else if(sal=="" || !regsal.test(sal) || sal<0){
+                window.alert("Enter a valid salary!");
+		return false;
+        }
+	else if(dob=="" || !dval){
+		window.alert("Join date cannot be before Birth Date!");
+		return false;
+	}
+	else if(jd=="" || !dval){
+                window.alert("Join date cannot be before Birth Date!");
+                return false;
+        }
+	else{
+		window.alert("Registration Successful!!");
+		return true;
+	}
+	return true;
+}
+
+</script>
+
+</head>
+<center>
+<body>
+<h1> Employee Registration Form</h1>
+<form name="registrationForm" onsubmit="return validate();" method="post">
+First Name<br>
+<input name="fname" type="text"><br><br>
+Last Name<br>
+<input name="lname" type="text"><br><br>
+DOB<br>
+<input name="dob" type="date" ><br><br>
+Joining Date<br>
+<input name="jd" type="date"><br><br>
+Salary<br>
+<input name="salary" type="text"><br><br><br>
+<center><input name="register" type="submit" value="Register"></center>
+</form>
+</body>
+</center>
+</html>

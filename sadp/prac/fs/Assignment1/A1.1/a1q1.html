@@ -1,0 +1,49 @@
+<!Doctype html>
+<head>
+<title>
+<b>Registration Form</b>
+</title>
+
+<script type="text/javascript">
+
+function validate()
+{
+	var fname=document.forms.registrationForm.fname.value;
+	var lname=document.forms.registrationForm.lname.value;
+	var age=document.forms.registrationForm.age.value;
+	var reg=/^[a-zA-Z]+$/;
+
+	if(fname=="" || !reg.test(fname)){
+		window.alert("Enter a valid first name!");
+		return false;
+	}
+	else if(lname=="" || !reg.test(lname)){
+                window.alert("Enter a valid last name!");
+		return false;
+        }
+	else if(age<18 || age>50){
+                window.alert("Age should be between 18 to 50!");
+		return false;
+        }
+	else{
+		window.alert("Registration Successful!!");
+		return true;
+	}
+	return true;
+}
+
+</script>
+
+</head>
+<center>
+<body>
+<h1>Registration Form</h1>
+<form name="registrationForm" onsubmit="return validate();" method="post">
+<input name="fname" type="text" placeholder="First Name"><br><br>
+<input name="lname" type="text" placeholder="Last Name"><br><br>
+<input name="age" type="number"><br><br>
+<center><input name="register" type="submit" value="Register"></center>
+</form>
+</body>
+</center>
+</html>
