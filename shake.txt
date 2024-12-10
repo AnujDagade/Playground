@@ -1,0 +1,107 @@
+
+
+#!wget https://storage.googleapis.com/download.tensorflow.org/data/shakespeare.txt
+
+import numpy as np
+import pandas as pd
+import tensorflow as tf
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import SimpleRNN, Dense, Embedding
+from tensorflow.keras.optimizers import Adam
+
+file_path = 'shakespeare.txt'
+
+with open(file_path, 'r', encoding='utf-8') as file:
+    shakespeare_text = file.read()
+
+print(shakespeare_text[:500])
+
+text = shakespeare_text
+chars = sorted(set(text))
+char_to_idx = {char: idx for idx, char in enumerate(chars)}
+idx_to_char = {idx: char for idx, char in enumerate(chars)}
+
+print(char_to_idx)
+
+seq_length = 10
+vocab_size = len(chars)
+embedding_dim = 64
+rnn_units = 128
+batch_size = 32
+
+def create_sequences(text, seq_length):
+    X = []
+    y = []
+    for i in range(len(text) - seq_length):
+        X.append([char_to_idx[char] for char in text[i:i + seq_length]])
+        y.append(char_to_idx[text[i + seq_length]])
+    return np.array(X), np.array(y)
+
+X, y = create_sequences(text, seq_length)
+print(X)
+print(y)
+
+model = Sequential([
+    Embedding(input_dim=vocab_size, output_dim=embedding_dim),
+    SimpleRNN(rnn_units, activation='relu'),
+    Dense(vocab_size, activation='softmax')
+])
+
+model.compile(optimizer=Adam(learning_rate=0.001), loss='sparse_categorical_crossentropy')
+
+
+def save_weights_every_2_epochs(epoch, logs):
+    if (epoch + 1) % 2 == 0:  # Save every 2 epochs
+        model.save_weights(f'model_weights_epoch_{epoch+1}.weights.h5')
+        print(f'\nSaved weights at epoch {epoch+1}')
+
+checkpoint_callback = tf.keras.callbacks.LambdaCallback(on_epoch_end=save_weights_every_2_epochs)
+
+model.fit(X, y, batch_size=batch_size, epochs=100, callbacks=[checkpoint_callback])
+
+model.save('my_rnn_model.keras')
+
+def generate_text(model, start_string, gen_length=40, temperature=0.01):
+    # Convert start_string to numbers (vectorize)
+    input_eval = [char_to_idx[char] for char in start_string]
+    input_eval = np.expand_dims(input_eval, 0)  # Add batch dimension
+
+    generated_text = []
+
+    for i in range(gen_length):
+
+        predictions = model(input_eval)
+
+        predictions = tf.squeeze(predictions, 0)
+
+        predictions = predictions / temperature
+
+        predictions = tf.expand_dims(predictions, 0)
+
+        predicted_id = tf.random.categorical(predictions, num_samples=1)[-1, 0].numpy()
+
+        generated_text.append(idx_to_char[predicted_id])
+
+        input_eval = np.append(input_eval[:, 1:], np.expand_dims([predicted_id], 0), axis=1)
+
+    return start_string + ''.join(generated_text)
+
+def generate_text1(model, start_string, gen_length=10):
+    input_eval = [char_to_idx[char] for char in start_string]
+    input_eval = np.expand_dims(input_eval, 0)
+    generated_text = []
+
+    for i in range(gen_length):
+        predictions = model(input_eval)
+        # print(predictions.shape)
+        # print(predictions[0])
+        predicted_id = tf.random.categorical(predictions, num_samples=1)[-1, 0].numpy()
+        print(predicted_id)
+        generated_text.append(idx_to_char[predicted_id])
+
+        input_eval = np.append(input_eval[:, 1:], np.expand_dims([predicted_id], 0), axis=1)
+
+    return start_string + ''.join(generated_text)
+
+print(generate_text(model, start_string="First Citizen: let us kill"))
+
